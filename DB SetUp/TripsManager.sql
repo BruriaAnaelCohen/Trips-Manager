@@ -1,9 +1,12 @@
+CREATE DATABASE TripsManager;
+
 USE TripsManager;
 
 CREATE TABLE TripType(
 	typeCode INT IDENTITY(1,1) PRIMARY KEY,
 	typeName VARCHAR(255)
 );
+
 CREATE TABLE Users (
     userCode INT IDENTITY(1,1) PRIMARY KEY,
     fName VARCHAR(255),
@@ -13,6 +16,7 @@ CREATE TABLE Users (
     loginPassword VARCHAR(255),
     firstAidCertificate BIT
 );
+
 CREATE TABLE Trip (
     tripCode INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     tripDestination VARCHAR(255),
@@ -24,6 +28,7 @@ CREATE TABLE Trip (
     img TEXT,
     FOREIGN KEY (typeCode) REFERENCES TripType(typeCode)
 );
+
 CREATE TABLE BookingPlace (
     bookingCode INT IDENTITY(1,1) PRIMARY KEY,
     userCode INT,
@@ -33,6 +38,7 @@ CREATE TABLE BookingPlace (
     FOREIGN KEY (userCode) REFERENCES Users(userCode),
     FOREIGN KEY (tripCode) REFERENCES Trip(tripCode)
 );
+
 INSERT INTO TripType (typeName) VALUES
     ('Wet'), 
     ('Nature'), 
@@ -62,9 +68,9 @@ INSERT INTO Trip (tripDestination, typeCode, tripDate, tripDurationHours, availa
 
     
 INSERT INTO BookingPlace (userCode, bookingDate , tripCode, numberOfPlaces) VALUES
-    (1, '2024-01-01', 1, 2),
+    (1, '2026-01-01', 1, 2),
     (2, '2023-12-27', 2, 3),
-    (3, '2023-12-28', 3, 1),
+    (3, '2025-12-28', 3, 1),
     (4, '2023-12-29', 4, 4),
-    (5, '2023-12-30', 5, 2),
+    (5, '2025-12-30', 5, 2),
 	(6,'2024-01-08',4,1);
