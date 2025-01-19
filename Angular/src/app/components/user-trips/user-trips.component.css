@@ -1,0 +1,58 @@
+.container {
+  background-color: #ffffffaf;
+  padding: 15px;
+  margin: 15px auto;
+  border-radius: 20px;
+}
+
+img {
+  width: 100px;
+  margin: 3px;
+}
+
+td {
+  max-width: 250px;
+  border: none;
+}
+
+.alltrips {
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+  align-content: center;
+}
+
+.trip {
+  padding: 10px;
+  align-items: center;
+  margin: 15px 16px;
+  border: 1px rgba(0, 0, 0, 0.089) solid;
+  border-radius: 20px;
+  width: 22%;
+  height: 250px;
+}
+
+.trip:hover {
+  cursor: pointer !important;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+.marked {
+  background-color: rgba(255, 192, 203, 0.13);
+  color: red;
+}
+
+.spinner {
+  margin: auto;
+  display: block;
+  width: 50px;
+  margin: auto;
+}

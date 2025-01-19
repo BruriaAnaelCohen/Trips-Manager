@@ -1,0 +1,33 @@
+<p>tyip-type-form works!</p>
+<form #frm="ngForm" (ngSubmit)="submitForm()">
+  <div class="container">
+    <div class="block">
+      <label for="type">Trip Type</label>
+      <input
+        #type="ngModel"
+        [(ngModel)]="tmpType.TypeName"
+        type="text"
+        required
+        placeholder="Enter trip type"
+        pattern="[a-zA-Z ]{2,30}"
+        id="type"
+        name="type"
+      />
+      <div *ngIf="type.invalid && (type.touched || type.dirty)">
+        <p *ngIf="type.errors!['required']">Requried</p>
+        <p *ngIf="type.errors!['pattern']">
+          English letters | space | 2-30 length
+        </p>
+      </div>
+    </div>
+    <div>
+      <img
+        class="spinner"
+        src="../../../assets/img/spinner.svg"
+        width="30px"
+        [hidden]="hideLoading"
+      />
+      <input type="submit" value="Add type" [disabled]="!frm.valid" />
+    </div>
+  </div>
+</form>

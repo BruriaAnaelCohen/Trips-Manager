@@ -1,0 +1,50 @@
+<form [formGroup]="form" (ngSubmit)="BookMe()" class="container">
+  <div class="inner_container">
+    <h1>Book to {{ this.tripSer.currTrip?.TripDestination }} trip!</h1>
+    <hr />
+    <div class="block">
+      <label for="place"><b>Numer of places</b></label>
+      <input
+        type="number"
+        value="1"
+        placeholder="Enter number of places"
+        id="place"
+        name="place"
+        formControlName="places"
+      />
+      <div *ngIf="plc.invalid && (plc.touched || plc.dirty)">
+        <p *ngIf="plc.errors!['required']">Requried</p>
+        <p *ngIf="plc.errors!['min']">Book a single place at least</p>
+        <p *ngIf="plc.errors!['max']">There are not enough available places</p>
+      </div>
+    </div>
+    <div class="block">
+      <div class="paid">
+        <div class="checkbox-wrapper-51">
+          <input
+            type="checkbox"
+            checked
+            id="cbx-51"
+            name="paid"
+            formControlName="payment"
+          />
+          <label for="cbx-51" class="toggle"
+            ><span
+              ><svg width="10px" height="10px" viewBox="0 0 10 10"></svg></span
+          ></label>
+        </div>
+        <label><b>I've already paid</b></label>
+      </div>
+      <div *ngIf="paid.invalid && (paid.touched || paid.dirty)">
+        <p *ngIf="paid.errors!['arrangePayment']">
+          Paying in hence is required
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <input type="submit" value="Done" class="btn" [disabled]="!form.valid" />
+    </div>
+    <button routerLink="../../BookingPlaces">Hide</button>
+  </div>
+</form>

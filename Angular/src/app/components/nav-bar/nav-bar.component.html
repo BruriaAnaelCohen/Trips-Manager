@@ -1,0 +1,41 @@
+<header>
+  <nav>
+    <div class="logo">
+      <a routerLink=""
+        ><img src="../../../../assets/img/logo/logo-no-background.png"
+      /></a>
+      <div class="name" [hidden]="userNotInSystem()">
+        <label
+          >{{ UserSer.currUser?.FName }} {{ UserSer.currUser?.LName }}</label
+        >
+      </div>
+      <div class="name" [hidden]="!this.UserSer.admin">ADMIN MODE</div>
+    </div>
+    <div class="navbar">
+      <ul>
+        <li><a routerLink="LogIn" [hidden]="hideLogInSignUp()">Log In</a></li>
+        <li><a routerLink="SignUp" [hidden]="hideLogInSignUp()">Sign Up</a></li>
+        <li><a routerLink="TripsList">Our Trips</a></li>
+        <li>
+          <a routerLink="MyAccount" [hidden]="hideMyAccount()">My Account</a>
+        </li>
+        <li>
+          <a routerLink="OurUsers" [hidden]="this.UserSer.admin == false"
+            >Our Users</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="logOut()"
+            *ngIf="
+              this.UserSer.admin == true ||
+              (this.UserSer.currUser != undefined &&
+                this.UserSer.currUser != null)
+            "
+            >Log Out</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

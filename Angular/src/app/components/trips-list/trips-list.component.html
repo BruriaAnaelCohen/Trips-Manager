@@ -1,0 +1,83 @@
+<div class="container">
+  <h1>{{ this.title }}</h1>
+  <hr />
+  <label for="type">Filter</label>
+  <select
+    id="type"
+    name="type"
+    (change)="this.filterList($any($event.target).value)"
+    value="All"
+  >
+    <option *ngFor="let t of this.allTypes">{{ t.TypeName }}</option>
+  </select>
+  <div *ngIf="this.userSer.admin">
+    <br />
+    <label for="type">Admin Filter </label>
+    <br />
+    <input
+      type="radio"
+      name="admin"
+      [value]="this.radio[0]"
+      (change)="filterListAdmin(this.radio[0])"
+    />
+    <label>{{ this.radio[0] }}</label
+    ><br />
+    <input
+      type="radio"
+      name="admin"
+      [value]="this.radio[1]"
+      (change)="filterListAdmin(this.radio[1])"
+    />
+    <label>{{ this.radio[1] }}</label
+    ><br />
+    <input
+      type="radio"
+      name="admin"
+      [value]="this.radio[2]"
+      (change)="filterListAdmin(this.radio[2])"
+    />
+    <label>{{ this.radio[2] }}</label
+    ><br />
+    <input
+      type="radio"
+      name="admin"
+      [value]="this.radio[3]"
+      (change)="filterListAdmin(this.radio[3])"
+    />
+    <label>{{ this.radio[3] }}</label
+    ><br />
+    <input
+      type="radio"
+      name="admin"
+      [value]="this.radio[4]"
+      (change)="filterListAdmin(this.radio[4])"
+    />
+    <label>{{ this.radio[4] }}</label
+    ><br />
+  </div>
+
+  <br />
+  <img
+    class="spinner"
+    src="../../../assets/img/spinner.svg"
+    [hidden]="hideLoading"
+  />
+  <button routerLink="./AddTrip" *ngIf="this.userSer.admin == true">
+    Add Trip
+  </button>
+  <router-outlet></router-outlet>
+  <div class="alltrips">
+    <div class="trip" *ngFor="let t of this.tripsListFiltered">
+      <div (click)="viewEditDetails(t)">
+        <h2>{{ t.TripDestination }}</h2>
+        <h3>{{ t.TripDate | date : "dd/MM/yyyy" }}</h3>
+        <p *ngIf="t.NeedParamedicDTO == true && this.userSer.admin == true">
+          Paramedic is needed
+        </p>
+      </div>
+      <button *ngIf="this.userSer.admin == true" (click)="viewBookings(t)">
+        View bookings
+      </button>
+    </div>
+  </div>
+</div>

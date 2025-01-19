@@ -1,0 +1,9 @@
+<div class="container">
+  <img src="../../../assets/img/profileColored.png" width="70px" />
+  <button (click)="viewEditComp()" [hidden]="this.hideEdit">Edit profile</button
+  ><br />
+  <router-outlet></router-outlet>
+  <button (click)="DeleteAccount()">Delete Account</button>
+  <button (click)="ViewMyTrips()">My trips</button>
+  <p *ngIf="this.ifBooked == true">Sorry, You're booked in trips</p>
+</div>

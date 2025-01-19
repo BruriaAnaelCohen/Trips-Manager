@@ -1,0 +1,14 @@
+<div class="container">
+  <table>
+    <tr>
+      <td>User Name</td>
+      <td>Booking Date</td>
+      <td>Number Of Places</td>
+    </tr>
+    <tr *ngFor="let b of this.bookingList">
+      <td>{{ b.UserFullNameDTO }}</td>
+      <td>{{ b.BookingDate | date : "dd/MM/yyyy hh:mm a" }}</td>
+      <td>{{ b.NumberOfPlaces }}</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,124 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <hr />
+    <div class="block" [hidden]="hideAttribute()">
+      <label for="fname"><b>First name</b></label>
+      <input
+        type="text"
+        [required]="isRequired()"
+        placeholder="Enter first name"
+        id="fname"
+        name="Fname"
+        formControlName="fname"
+        [value]="getFname()"
+      />
+      <div *ngIf="fn.invalid && (fn.touched || fn.dirty)">
+        <p *ngIf="fn.errors!['required']">Requried</p>
+        <p *ngIf="fn.errors!['pattern']">
+          English letters and spaces only | 2-20 length
+        </p>
+      </div>
+    </div>
+
+    <div class="block" [hidden]="hideAttribute()">
+      <label for="lname"><b>Last name</b></label>
+      <input
+        type="text"
+        [required]="isRequired()"
+        placeholder="Enter last name"
+        id="lname"
+        name="Lname"
+        formControlName="lname"
+      />
+      <div *ngIf="ln.invalid && (ln.touched || ln.dirty)">
+        <p *ngIf="ln.errors!['required']">Requried</p>
+        <p *ngIf="ln.errors!['pattern']">
+          English letters and spaces only | 2-20 length
+        </p>
+      </div>
+    </div>
+
+    <div class="block" [hidden]="hideAttribute()">
+      <label for="phone"><b>Phone number</b></label>
+      <input
+        type="text"
+        [required]="isRequired()"
+        placeholder="Enter phone number"
+        id="phone"
+        name="phone"
+        formControlName="phone"
+      />
+      <div *ngIf="phn.invalid && (phn.touched || phn.dirty)">
+        <p *ngIf="phn.errors!['required']">Requried</p>
+        <p *ngIf="phn.errors!['pattern']">Digits only | 10 length</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <label for="email"><b>Email</b></label>
+      <input
+        type="text"
+        placeholder="Enter Email"
+        id="email"
+        name="email"
+        formControlName="email"
+        [value]="getEmail()"
+      />
+      <div *ngIf="ml.invalid && (ml.touched || ml.dirty)">
+        <p *ngIf="ml.errors!['required']">Requried</p>
+        <p *ngIf="ml.errors!['pattern']">Invalid email pattern</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <label for="psw"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        id="psw"
+        name="psw"
+        formControlName="password"
+      />
+      <div *ngIf="psw.invalid && (psw.touched || psw.dirty)">
+        <p *ngIf="psw.errors!['required']">Requried</p>
+        <p *ngIf="psw.errors!['pattern']">
+          Set 6 characters or more | Set one digit | Set one English letter
+        </p>
+      </div>
+    </div>
+
+    <div class="block" [hidden]="hideAttribute()">
+      <div class="paramedic">
+        <div class="checkbox-wrapper-51">
+          <input
+            type="checkbox"
+            id="cbx-51"
+            name="paramedic"
+            formControlName="paramedic"
+          />
+          <label for="cbx-51" class="toggle"
+            ><span
+              ><svg width="10px" height="10px" viewBox="0 0 10 10"></svg></span
+          ></label>
+        </div>
+        <label><b>I have First Aid Certificate</b></label>
+      </div>
+    </div>
+
+    <div>
+      <img
+        class="spinner"
+        src="../../../assets/img/spinner.svg"
+        width="30px"
+        [hidden]="hideLoading"
+      />
+      <input
+        type="submit"
+        [value]="title"
+        class="signupbtn"
+        [disabled]="!form.valid"
+      />
+    </div>
+  </div>
+</form>
