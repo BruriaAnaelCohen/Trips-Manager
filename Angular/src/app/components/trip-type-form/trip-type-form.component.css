@@ -1,0 +1,43 @@
+.container {
+  background-color: #ffffff;
+  padding: 16px;
+  margin: 15px auto;
+  border-radius: 20px;
+  width: 100%;
+}
+
+input[type="text"] {
+  width: 100%;
+  background-color: #e375150d;
+  padding: 12px 20px;
+  margin: 8px auto;
+  display: inline-block;
+  border: none;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #e37515;
+  color: white;
+  padding: 8px 10px;
+  margin: 8px auto;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 30px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+p {
+  color: #e37515;
+}
+
+.spinner {
+  margin: auto;
+  display: block;
+  width: 50px;
+  margin: auto;
+}

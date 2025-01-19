@@ -1,0 +1,78 @@
+<div class="container">
+  <div [hidden]="hideHead">
+    <h1>Trips List</h1>
+    <hr />
+    <label for="type">Filter</label>
+    <select
+      id="type"
+      name="type"
+      (change)="this.filterList($any($event.target).value)"
+      value="All"
+    >
+      <option *ngFor="let t of this.allTypes">{{ t.TypeName }}</option>
+    </select>
+    <br />
+  </div>
+  <br />
+  <div *ngIf="this.userSer.admin == false">
+    <input
+      type="radio"
+      name="x"
+      [value]="this.radio[0]"
+      (change)="secoundFilter(this.radio[0])"
+    />
+    <label>{{ this.radio[0] }}</label
+    ><br />
+    <input
+      type="radio"
+      name="x"
+      [value]="this.radio[1]"
+      (change)="secoundFilter(this.radio[1])"
+    />
+    <label>{{ this.radio[1] }}</label
+    ><br />
+    <label><b>Sort by:</b></label
+    ><br />
+    <input
+      type="radio"
+      name="y"
+      [value]="this.sortRadio[0]"
+      (change)="sort(this.sortRadio[0])"
+    />
+    <label>{{ this.sortRadio[0] }}</label
+    ><br />
+    <input
+      type="radio"
+      name="y"
+      [value]="this.sortRadio[1]"
+      (change)="sort(this.sortRadio[1])"
+    />
+    <label>{{ this.sortRadio[1] }}</label
+    ><br />
+  </div>
+
+  <img
+    class="spinner"
+    src="../../../assets/img/spinner.svg"
+    [hidden]="hideLoading"
+  />
+
+  <div class="alltrips">
+    <div
+      class="trip"
+      *ngFor="let t of this.tripsListFiltered"
+      (click)="viewDetails(t)"
+    >
+      <div>
+        <h2>{{ t.TripDestination }}</h2>
+        <h3>{{ t.TripDate | date : "dd/MM/yyyy" }}</h3>
+        <button
+          [hidden]="cantBeCanceled(t)"
+          (click)="deleteBooking(t.TripCode!)"
+        >
+          Cancel booking
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

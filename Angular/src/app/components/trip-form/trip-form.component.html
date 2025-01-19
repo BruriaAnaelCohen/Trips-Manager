@@ -1,0 +1,127 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <hr />
+    <div class="block">
+      <label for="Destination"><b>Destination</b></label>
+      <input
+        type="text"
+        placeholder="Enter destination"
+        id="destination"
+        name="destination"
+        formControlName="destination"
+        [value]="t?.TripDestination!"
+      />
+      <div *ngIf="dest.invalid && (dest.touched || dest.dirty)">
+        <p *ngIf="dest.errors!['required']">Requried</p>
+        <p *ngIf="dest.errors!['pattern']">
+          English letters | - | spaces | 2-30 length
+        </p>
+      </div>
+    </div>
+
+    <div class="block">
+      <label for="type">Type </label>
+      <select
+        id="type"
+        name="type"
+        formControlName="type"
+        (change)="this.chosen($any($event.target).value)"
+      >
+        <option *ngFor="let t of this.allTypes" [value]="t.TypeName">
+          {{ t.TypeName }}
+        </option>
+      </select>
+      <br />
+      <div *ngIf="tp.invalid && (tp.touched || tp.dirty)">
+        <p *ngIf="tp.errors!['required']">Requried</p>
+      </div>
+      <button routerLink="./AddType">Add type</button>
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="block">
+      <label for="date"><b>Date</b></label>
+      <input
+        type="date"
+        placeholder="Enter date"
+        id="date"
+        name="date"
+        formControlName="date"
+      />
+      <div *ngIf="dt.invalid && (dt.touched || dt.dirty)">
+        <p *ngIf="dt.errors!['required']">Requried</p>
+        <p *ngIf="dt.errors!['dateErr']">Schedule maximum 3 month hence</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <label for="duration"><b>Duration Hours</b></label>
+      <input
+        type="number"
+        placeholder="Enter duration hours"
+        id="duration"
+        name="duration"
+        formControlName="duration"
+      />
+      <div *ngIf="dur.invalid && (dur.touched || dur.dirty)">
+        <p *ngIf="dur.errors!['required']">Requried</p>
+        <p *ngIf="dur.errors!['min']">Minimum 3 hours</p>
+        <p *ngIf="dur.errors!['max']">Maximun 12 hours</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <label for="availableP"><b>Availale Places</b></label>
+      <input
+        type="number"
+        placeholder="Enter number of availale places"
+        id="availableP"
+        name="availableP"
+        formControlName="availableP"
+      />
+      <div *ngIf="avbl.invalid && (avbl.touched || avbl.dirty)">
+        <p *ngIf="avbl.errors!['required']">Requried</p>
+        <p *ngIf="avbl.errors!['min']">At least one available place</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <label for="price"><b>Price</b></label>
+      <input
+        type="number"
+        placeholder="Enter price"
+        id="price"
+        name="price"
+        formControlName="price"
+      />
+      <div *ngIf="prc.invalid && (prc.touched || prc.dirty)">
+        <p *ngIf="prc.errors!['required']">Requried</p>
+        <p *ngIf="prc.errors!['min']">Free trip | Positive price only</p>
+        <p *ngIf="prc.errors!['max']">Too expensive</p>
+      </div>
+    </div>
+    <div class="block">
+      <label for="image"><b>Image</b></label>
+      <input
+        type="text"
+        placeholder="Enter image sorce"
+        id="image"
+        name="image"
+        formControlName="image"
+      />
+      <div *ngIf="img.invalid && (img.touched || img.dirty)">
+        <p *ngIf="img.errors!['pattern']">Invalide image regex</p>
+      </div>
+    </div>
+    <div>
+      <img
+        class="spinner"
+        src="../../../assets/img/spinner.svg"
+        width="30px"
+        [hidden]="hideLoading"
+      />
+      <input type="submit" [value]="title" [disabled]="!form.valid" />
+    </div>
+  </div>
+</form>

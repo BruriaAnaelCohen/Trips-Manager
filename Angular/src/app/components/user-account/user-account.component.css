@@ -1,0 +1,18 @@
+button {
+  background-color: #e37515;
+  color: white;
+  padding: 14px 20px;
+  display: block;
+  font-weight: bold;
+  margin: 8px auto;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 30px;
+}
+
+img {
+  display: block;
+  width: 120px;
+  margin: 30px auto 5px auto;
+}

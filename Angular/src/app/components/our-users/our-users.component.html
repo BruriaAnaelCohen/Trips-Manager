@@ -1,0 +1,21 @@
+<p>our-users works!</p>
+<div class="container">
+  <div *ngFor="let u of users" (click)="viewUserTrips(u)" class="userDiv">
+    <h2>{{ u.FName }} {{ u.LName }}</h2>
+    <table>
+      <tr>
+        <td><b>Email: </b>{{ u.Email }}</td>
+        <td><b>Password: </b>{{ u.LoginPassword }}</td>
+        <td><b>Code: </b>{{ u.UserCode }}</td>
+      </tr>
+      <tr>
+        <td><b>Phone: </b>{{ u.Phone }}</td>
+        <td><b>Paramedic: </b>{{ u.FirstAidCertificate }}</td>
+        <td></td>
+      </tr>
+      <div *ngIf="selectedU == u">
+        <router-outlet></router-outlet>
+      </div>
+    </table>
+  </div>
+</div>

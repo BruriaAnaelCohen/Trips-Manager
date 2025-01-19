@@ -1,0 +1,43 @@
+<div class="container">
+  <label *ngIf="t != null && t != undefined">Code: {{ t.TripCode }}</label
+  ><br />
+  <label *ngIf="t != null && t != undefined">Type: {{ t.TypeNameDTO }}</label
+  ><br />
+  <label *ngIf="t != null && t != undefined"
+    >Departure date and time:
+    {{ t.TripDate | date : "dd/MM/yyyy hh:mm a" }}</label
+  ><br />
+  <label *ngIf="t != null && t != undefined"
+    >Duration hours: {{ t.TripDurationHours }}</label
+  ><br />
+  <label *ngIf="t != null && t != undefined"
+    >Available places: {{ t.AvailablePlaces }}</label
+  ><br />
+  <label *ngIf="t != null && t != undefined">Price: {{ t.Price }}</label
+  ><br />
+  <label *ngIf="t != null && t != undefined && t.NeedParamedicDTO == true"
+    >Paramedic is needed: V</label
+  >
+  <label *ngIf="t != null && t != undefined && t.NeedParamedicDTO == false"
+    >Paramedic is needed: X</label
+  ><br />
+  <label *ngIf="t != null && t != undefined"
+    >Destination: {{ t.TripDestination }}</label
+  ><br />
+  <img
+    *ngIf="t != null && t != undefined && t.Img != ''"
+    src="../../../assets/img/{{ t.Img }}"
+  />
+  <img
+    *ngIf="t != null && t != undefined && t.Img == ''"
+    src="../../../assets/img/animated_map.jpg"
+  /><br />
+
+  <button
+    [routerLink]="gotoBooking()"
+    [hidden]="this.bookedAlready || this.userSer.admin == true"
+  >
+    Book your place
+  </button>
+  <router-outlet></router-outlet>
+</div>

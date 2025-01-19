@@ -1,0 +1,10 @@
+img {
+  width: 400px;
+}
+
+.container {
+  background-color: #ffffffaf;
+  padding: 15px;
+  margin: 15px auto;
+  border-radius: 20px;
+}
