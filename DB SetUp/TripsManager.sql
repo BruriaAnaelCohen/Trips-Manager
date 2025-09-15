@@ -2,7 +2,7 @@ CREATE DATABASE TripsManager;
 
 USE TripsManager;
 
-CREATE TABLE TripType(
+CREATE TABLE TripType (
 	typeCode INT IDENTITY(1,1) PRIMARY KEY,
 	typeName VARCHAR(255)
 );
